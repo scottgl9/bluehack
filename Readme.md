@@ -44,7 +44,7 @@ The firmware is just uploaded temporarely into HackRF so a re-upload is needed a
 Install procedure:
 * cd [bluehack directory]/host/hackrf-tools
 * ./make_bluehack.sh (root or virtualenv needed to install pypacker)
-* Download firmware to HackRF RAM:
+* Download firmware to HackRF RAM. This is a *temporary* installation: the original firmware will be restored on reset!
 
   Hold down the DFU button while powering it on or while pressing and
   releasing the RESET button. Release the DFU button after the 3V3 LED illuminates. Then:
