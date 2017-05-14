@@ -58,19 +58,19 @@ cd [bluehack directory]/host/hackrf-tools
 
 * Listen for packets on advertising channels (press enter to circulate through channels 37,38,39,37...):
 
-  python bluehack.py host/hackrf-tools/bluehack.py --mode 0
+  python bluehack.py --mode 0
 * Same as above + write packets to pcap file
 
-  python bluehack.py host/hackrf-tools/bluehack.py --mode 0 --pcpafile packets.pcap
+  python bluehack.py --mode 0 --pcpafile packets.pcap
 * Listen for *any* connection setup and follow it (experimental)
 
-  python bluehack.py host/hackrf-tools/bluehack.py --mode 1 --pcpafile packets.pcap
+  python bluehack.py --mode 1 --pcpafile packets.pcap
 * Listen for connections targeting an advertising address and follow it (experimental)
 
-  python bluehack.py host/hackrf-tools/bluehack.py --mode 1 --pcpafile packets.pcap --advaddr AABBCCDDEEFF
+  python bluehack.py --mode 1 --pcpafile packets.pcap --advaddr AABBCCDDEEFF
 * Listen for *any* connection setup by circulating through all advertising channels and follow it (experimental)
 
-  python bluehack.py host/hackrf-tools/bluehack.py --mode 2 --pcpafile packets.pcap
+  python bluehack.py --mode 2 --pcpafile packets.pcap
 
 
 Call `python bluehack.py --help` for more infos.
