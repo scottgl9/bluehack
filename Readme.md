@@ -75,6 +75,11 @@ cd [bluehack directory]/host/hackrf-tools
 
 Call `python bluehack.py --help` for more infos.
 
+### Technical details
+The demodulation of the BTLE-packets takes place in firmware as an USB connection is too slow to be able to react
+on packets like connection requests. The data flow is as follows: `HackRF(Demodulation) --BTLE-packets--> Host`.
+The USB-Connection allows to set the BTLE mode for receiving and the channel to listen on.
+
 ### FAQ / troubleshoting
 On any error: make sure the green LED is blinking in idle mode before starting listening. Re-upload the firmware on errors.
 
