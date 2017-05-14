@@ -1,0 +1,92 @@
+00000000296BD650 [ 39 ADV_IND         crc=1 sig=    40/128 len=46 t=163256876 AdvA=CCB11A8AC6F5 content=%uB@O$W
+00000000296DB31E [ 39 ADV_IND         crc=1 sig=    90/128 len=46 t=   8303 AdvA=78BDBCCFAB3E content=%>xuBx>z:
+000000002991E57C [ 39 ADV_IND         crc=1 sig=    90/128 len=46 t= 162552 AdvA=78BDBCCFAB3E content=%>xuBx>z:
+0000000029B497FA [ 39 ADV_IND         crc=1 sig=    89/128 len=46 t= 160063 AdvA=78BDBCCFAB3E content=%>xuBx>z:
+0000000029C95190 [ 39 ADV_IND         crc=0 sig=    40/128 len=46 t=  70549 AdvA=CCB11A8AC6F5 content=%ub@O$ W
+0000000029D8232A [ 39 ADV_SCAN_IND    crc=0 sig=    11/128 len=43 t=  62900
+0000000029D938B8 [ 39 ADV_IND         crc=1 sig=    89/128 len=46 t=  13344 AdvA=78BDBCCFAB3E content=%>xuBx>z:
+0000000029E1BB6A [ 39 ADV_IND         crc=1 sig=    40/128 len=46 t=  37211 AdvA=CCB11A8AC6F5 content=%uB@O$W
+0000000029F9679C [ 39 ADV_IND         crc=1 sig=    40/128 len=46 t=  86921 AdvA=CCB11A8AC6F5 content=%uB@O$W
+000000002A2069BC [ 39 RESERVED8       crc=0 sig=    11/128 len=43 t= 167781
+000000002A252734 [ 39 ADV_IND         crc=1 sig=    90/128 len=46 t=  17828 AdvA=78BDBCCFAB3E content=%>xuBx>z:
+000000002A2A4E12 [ 39 ADV_IND         crc=1 sig=    40/128 len=46 t=  31412 AdvA=CCB11A8AC6F5 content=%uB@O$W
+000000002A49C650 [ 39 ADV_IND         crc=1 sig=    90/128 len=46 t= 114663 AdvA=78BDBCCFAB3E content=%>xuBx>z:
+000000002A594D98 [ 39 ADV_IND         crc=1 sig=    41/128 len=46 t=  65846 AdvA=CCB11A8AC6F5 content=%uB@O$W
+000000002A6F4FCE [ 39 ADV_IND         crc=1 sig=    90/128 len=46 t=  97548 AdvA=78BDBCCFAB3E content=%>xuBx>z:
+000000002A876224 [ 39 ADV_IND         crc=1 sig=    40/128 len=46 t=  95564 AdvA=CCB11A8AC6F5 content=%uB@O$W
+000000002AB4BD2C [ 39 ADV_IND         crc=1 sig=    40/128 len=46 t= 191357 AdvA=CCB11A8AC6F5 content=%uB@O$W
+000000002AB8710A [ 39 ADV_IND         crc=1 sig=    90/128 len=46 t=  15446 AdvA=78BDBCCFAB3E content=%>xuBx>z:
+000000002ADC5438 [ 39 ADV_IND         crc=1 sig=    90/128 len=46 t= 161587 AdvA=78BDBCCFAB3E content=%>xuBx>z:
+000000002AF95944 [ 39 ADV_NONCONN_IND crc=0 sig=     9/128 len=59 t= 130705 AdvA=78BDBC59D87D content=2}Yxu@xY{Y| xfw$Z
+000000002AFAE8AC [ 39 ADV_IND         crc=1 sig=    40/128 len=46 t=   3816 AdvA=CCB11A8AC6F5 content=%uB@O$W
+000000002AFF51C6 [ 39 ADV_IND         crc=1 sig=    90/128 len=46 t=  12919 AdvA=78BDBCCFAB3E content=%>xuBx>z:
+libusb_control_transfer: HACKRF_VENDOR_REQUEST_BTLE_CHANNEL: 38
+000000002B10A652 [ 38 ADV_IND         crc=0 sig=    44/128 len=46 t=  76138 AdvA=CCB11A8AC6F5 content=%uB@O$W
+000000002B24DC64 [ 38 ADV_IND         crc=1 sig=    75/128 len=46 t=  80415 AdvA=78BDBCCFAB3E content=%>xuBx>z:
+000000002B29ACB8 [ 38 ADV_IND         crc=1 sig=    44/128 len=46 t=  31881 AdvA=CCB11A8AC6F5 content=%uB@O$W
+000000002B4154D4 [ 38 ADV_IND         crc=0 sig=    44/128 len=46 t=  91630 AdvA=CCB11A8AC6F5 content=%uB@O$W
+000000002B49E362 [ 38 ADV_IND         crc=1 sig=    75/128 len=46 t=  42549 AdvA=78BDBCCFAB3E content=%>xuBx>z:
+000000002B6E526E [ 38 ADV_IND         crc=0 sig=    44/128 len=46 t= 149935 AdvA=CCB11E8AC4F5 content=%}@BBO:$@W
+000000002B96710E [ 38 ADV_IND         crc=0 sig=    44/128 len=46 t= 203605 AdvA=CCB11E8AC6F5 content=%{uB@O:+%@W
+000000002BAF6A68 [ 38 ADV_IND         crc=1 sig=    45/128 len=46 t= 101090 AdvA=CCB11A8AC6F5 content=%uB@O$W
+000000002BB0B4FC [ 38 ADV_IND         crc=1 sig=    76/128 len=46 t=  12804 AdvA=78BDBCCFAB3E content=%>xuBx>z:
+000000002BF032BE [ 38 ADV_IND         crc=1 sig=    45/128 len=46 t= 281630 AdvA=CCB11A8AC6F5 content=%uB@O$W
+000000002BF2B5D6 [ 38 ADV_IND         crc=1 sig=    76/128 len=46 t=  13471 AdvA=78BDBCCFAB3E content=%>xuBx>z:
+000000002C084070 [ 38 ADV_IND         crc=1 sig=    45/128 len=46 t=  92084 AdvA=CCB11A8AC6F5 content=%uB@O$W
+000000002C33E5B2 [ 38 ADV_IND         crc=1 sig=    45/128 len=46 t= 197392 AdvA=CCB11A8AC6F5 content=%uB@O$W
+000000002C341AF8 [ 38 SCAN_RSP        crc=1 sig=    44/128 len=46 t=   3799 AdvA=CCB11A8AC6F5  content=%[TV] Samsung 5 Series (55)\}
+000000002C396050 [ 38 ADV_IND         crc=1 sig=    76/128 len=46 t=  22139 AdvA=78BDBCCFAB3E content=%>xuBx>z:
+000000002C5DB42E [ 38 ADV_IND         crc=1 sig=    76/128 len=46 t= 146637 AdvA=78BDBCCFAB3E content=%>xuBx>z:
+000000002C6EB706 [ 38 ADV_IND         crc=1 sig=    44/128 len=46 t=  66334 AdvA=CCB11A8AC6F5 content=%uB@O$W
+000000002C796556 [ 38 ADV_IND         crc=1 sig=    44/128 len=46 t=  51963 AdvA=CCB11A8AC6F5 content=%uB@O$W
+000000002C82296C [ 38 ADV_IND         crc=1 sig=    76/128 len=46 t=  40004 AdvA=78BDBCCFAB3E content=%>xuBx>z:
+000000002C913A38 [ 38 ADV_IND         crc=0 sig=    44/128 len=46 t=  54730 AdvA=CCB11A8AC6F5 content=%uB@O:$W
+000000002CA82520 [ 38 ADV_IND         crc=1 sig=    44/128 len=46 t=  96302 AdvA=CCB11A8AC6F5 content=%uB@O$W
+000000002CC03458 [ 38 ADV_IND         crc=0 sig=    44/128 len=46 t= 105983 AdvA=CCB11A8AC6F5 content=%uB@O;$G
+000000002CC9F0E6 [ 38 ADV_IND         crc=1 sig=    76/128 len=46 t=  50949 AdvA=78BDBCCFAB3E content=%>xuBx>z:
+libusb_control_transfer: HACKRF_VENDOR_REQUEST_BTLE_CHANNEL: 37
+000000002CD5C348 [ 38 ADV_IND         crc=1 sig=    44/128 len=46 t=  39919 AdvA=CCB11A8AC6F5 content=%uB@O$W
+000000002CFDB398 [ 37 ADV_IND         crc=0 sig=    37/128 len=46 t= 190233 AdvA=CCB19A8AC6F7 content=%uB@O$ _
+000000002D112F62 [ 37 ADV_IND         crc=1 sig=    38/128 len=46 t=  98632 AdvA=CCB11A8AC6F5 content=%uB@O$W
+000000002D25223A [ 37 ADV_IND         crc=0 sig=    38/128 len=46 t= 105875 AdvA=CCB11A8AC6F5 content=%uB@O$W
+000000002D4A42FE [ 37 ADV_IND         crc=1 sig=    73/128 len=46 t= 179107 AdvA=78BDBCCFAB3E content=%>xuBx>z:
+000000002D86ACC0 [ 37 ADV_IND         crc=1 sig=    38/128 len=46 t= 265298 AdvA=CCB11A8AC6F5 content=%uB@O$W
+000000002D8E68FA [ 37 ADV_IND         crc=1 sig=    73/128 len=46 t=  45937 AdvA=78BDBCCFAB3E content=%>xuBx>z:
+000000002D915B1C [ 37 ADV_IND         crc=1 sig=    37/128 len=46 t=  18132 AdvA=CCB11A8AC6F5 content=%uB@O$W
+000000002DA92F98 [ 37 ADV_IND         crc=0 sig=    37/128 len=46 t=  88432 AdvA=C8B11AAC6D5 content=%w@O$ @W
+000000002DB2F598 [ 37 ADV_IND         crc=1 sig=    73/128 len=46 t=  40480 AdvA=78BDBCCFAB3E content=%>xuBx>z:
+000000002DC02A46 [ 37 ADV_IND         crc=1 sig=    38/128 len=46 t=  62961 AdvA=CCB11A8AC6F5 content=%uB@O$W
+000000002DD6D034 [ 37 ADV_IND         crc=1 sig=    73/128 len=46 t=  91701 AdvA=78BDBCCFAB3E content=%>xuBx>z:
+000000002DD925D6 [ 37 ADV_IND         crc=1 sig=    37/128 len=46 t=   5814 AdvA=CCB11A8AC6F5 content=%uB@O$W
+000000002DF0CC40 [ 37 ADV_IND         crc=1 sig=    37/128 len=46 t=  96339 AdvA=CCB11A8AC6F5 content=%uB@O$W
+000000002DFC3272 [ 37 ADV_IND         crc=1 sig=    73/128 len=46 t=  50903 AdvA=78BDBCCFAB3E content=%>xuBx>z:
+000000002E3C1A6E [ 37 ADV_IND         crc=1 sig=    73/128 len=46 t= 316991 AdvA=78BDBCCFAB3E content=%>xuBx>z:
+000000002E432C7C [ 37 ADV_IND         crc=1 sig=    36/128 len=46 t=  32015 AdvA=CCB11A8AC6F5 content=%uB@O$W
+000000002E59F562 [ 37 ADV_IND         crc=1 sig=    37/128 len=46 t=  96301 AdvA=CCB11A8AC6F5 content=%uB@O$W
+000000002E82224A [ 37 ADV_IND         crc=1 sig=    73/128 len=46 t= 186992 AdvA=78BDBCCFAB3E content=%>xuBx>z:
+000000002E85AEE6 [ 37 ADV_IND         crc=0 sig=    23/128 len=46 t=  12572 AdvA=CCB11A8AC6F5 content=%uBHO$;qul]L
+000000002EA73908 [ 37 ADV_IND         crc=1 sig=    73/128 len=46 t= 138109 AdvA=78BDBCCFAB3E content=%>xuBx>z:
+000000002EEC31F4 [ 37 ADV_IND         crc=1 sig=    72/128 len=46 t= 306453 AdvA=78BDBCCFAB3E content=%>xuBx>z:
+000000002EF6C2F0 [ 37 ADV_IND         crc=0 sig=    37/128 len=46 t=  51813 AdvA=CCB19A8AC6F5 content=%uB@O$W
+000000002F0E48A0 [ 37 ADV_IND         crc=0 sig=    37/128 len=46 t= 101035 AdvA=CCB11A8AC6F5 content=%uB@O$@W
+000000002F239B54 [ 37 ADV_IND         crc=0 sig=    37/128 len=46 t=  85700 AdvA=C8B11A8AC6F5 content=%u!hO$W
+000000002F32C51E [ 37 ADV_IND         crc=1 sig=    72/128 len=46 t=  63306 AdvA=78BDBCCFAB3E content=%>xuBx>z:
+000000002F39ABF6 [ 37 ADV_IND         crc=0 sig=    37/128 len=46 t=  31611 AdvA=CCB19A8AC6F5 content=%uB`O$W
+000000002F50209A [ 37 ADV_IND         crc=1 sig=    72/128 len=46 t= 131415 AdvA=78BDBCCFAB3E content=%>xuBx>z:
+000000002F8D3076 [ 37 ADV_IND         crc=1 sig=    72/128 len=46 t= 299854 AdvA=78BDBCCFAB3E content=%>xuBx>z:
+000000002F9C6036 [ 37 ADV_IND         crc=0 sig=    37/128 len=46 t=  65136 AdvA=CCB11A8AC6F5 content=%uB!@O$W
+000000002FAEA654 [ 37 ADV_IND         crc=1 sig=    72/128 len=46 t=  94976 AdvA=78BDBCCFAB3E content=%>xuBx>z:
+000000002FB998D0 [ 37 ADV_IND         crc=0 sig=    37/128 len=46 t=  49719 AdvA=C8B11A8AC6F5 content=%uB@O$W
+000000002FDA51F8 [ 37 ADV_IND         crc=1 sig=    37/128 len=46 t= 162009 AdvA=CCB11A8AC6F5 content=%uB@O$W
+000000002FEF1EAE [ 37 ADV_IND         crc=1 sig=    72/128 len=46 t=  86010 AdvA=78BDBCCFAB3E content=%>xuBx>z:
+000000003005766C [ 37 ADV_IND         crc=1 sig=    37/128 len=46 t= 116300 AdvA=CCB11A8AC6F5 content=%uB@O$W
+00000000300F59CC [ 37 ADV_IND         crc=1 sig=    72/128 len=46 t=  39605 AdvA=78BDBCCFAB3E content=%>xuBx>z:
+000000003032E98A [ 37 ADV_IND         crc=1 sig=    73/128 len=46 t= 154633 AdvA=78BDBCCFAB3E content=%>xuBx>z:
+000000003095EA54 [ 37 ADV_IND         crc=1 sig=    72/128 len=46 t= 461879 AdvA=78BDBCCFAB3E content=%>xuBx>z:
+0000000030B72522 [ 37 ADV_IND         crc=1 sig=    72/128 len=46 t= 162951 AdvA=78BDBCCFAB3E content=%>xuBx>z:
+0000000030D657A0 [ 37 ADV_IND         crc=1 sig=    73/128 len=46 t= 163903 AdvA=78BDBCCFAB3E content=%>xuBx>z:
+0000000030D8F6E2 [ 37 ADV_IND         crc=1 sig=    36/128 len=46 t=   8462 AdvA=CCB11A8AC6F5 content=%uB@O$W
+0000000030D9C8AA [ 37 SCAN_REQ        crc=0 sig=     6/128 len=21 t=   4245 ScanA=77D8D9E258A2 AdvA=F11FB5DCE7E8
+0000000030F034A2 [ 37 SCAN_RSP        crc=0 sig=    36/128 len=46 t=  96334 AdvA=C8B19E8BC677  content=%wuB!@O@ @UJ
+000000003118A15A [ 37 ADV_IND         crc=1 sig=    73/128 len=46 t= 179503 AdvA=78BDBCCFAB3E content=%>xuBx>z:
+

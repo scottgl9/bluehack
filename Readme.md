@@ -1,5 +1,5 @@
 ### General information
-This is Bluehack, a BTLE sniffer using [HackRF](https://github.com/mossmann/hackrf).
+This is Bluehack, a BTLE sniffer using [HackRF](https://github.com/mossmann/hackrf)
 
 Features:
 * Listen for packets on advertising channels
@@ -72,6 +72,8 @@ cd [bluehack directory]/host/hackrf-tools
 
   python bluehack.py host/hackrf-tools/bluehack.py --mode 2 --pcpafile packets.pcap
 
+
+Call `python bluehack.py --help` for more infos.
 
 ### FAQ / troubleshoting
 On any error: make sure the green LED is blinking in idle mode before starting listening. Re-upload the firmware on errors.
