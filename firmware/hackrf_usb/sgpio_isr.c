@@ -58,7 +58,7 @@ void sgpio_isr_rx() {
 		: "r0"
 	);
 
-	if ((abs(p2[0]) + abs(p2[1])) > 8 || (abs(p2[6]) + abs(p2[7])) > 8) {
+	if ((abs(p2[0]) + abs(p2[1])) > btle_config_global.noisegate || (abs(p2[6]) + abs(p2[7])) > btle_config_global.noisegate) {
 		__asm__(
 			"ldr r0, [%[SGPIO_REG_SS], #40]\n\t"
 			"strh r0, [%[p], #2]\n\t"

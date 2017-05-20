@@ -1987,7 +1987,7 @@ int ADDCALL hackrf_set_btle_mode(hackrf_device* device,
 	uint8_t data[6] = {0};
 	// at least one byte
 	int data_size = 0;
-	//printf("setting BTLE mode\n");
+	printf("setting BTLE mode\n");
 
 	if (mode < 0 || mode > BTLE_MODE_FOLLOW_DYNAMIC) {
 		printf("invalid mode: %d\n", mode);
@@ -2043,10 +2043,10 @@ int ADDCALL hackrf_set_btle_mode(hackrf_device* device,
 
 	if (mode != BTLE_MODE_OFF) {
 		const uint8_t endpoint_address = LIBUSB_ENDPOINT_IN | 1;
-		//printf("create_transfer_thread\n");
+		printf("create_transfer_thread()\n");
 		result = create_transfer_thread(device, endpoint_address, rx_callback);
 	} else {
-		//printf("kill_transfer_thread\n");
+		printf("kill_transfer_thread()\n");
 		result = kill_transfer_thread(device);
 	}
 	return result;

@@ -50,7 +50,7 @@ void set_btle_transfer_mode(const transceiver_mode_t new_transceiver_mode) {
 
 	_transceiver_mode = new_transceiver_mode;
 
-	if (new_transceiver_mode == TRANSCEIVER_MODE_BTLE || new_transceiver_mode == TRANSCEIVER_MODE_RX) {
+	if (new_transceiver_mode == TRANSCEIVER_MODE_BTLE) {
 		led_off(LED3);
 		led_on(LED2);
 		usb_endpoint_init(&usb_endpoint_bulk_in);
@@ -68,7 +68,7 @@ void set_btle_transfer_mode(const transceiver_mode_t new_transceiver_mode) {
 		rf_path_set_direction(&rf_path, RF_PATH_DIRECTION_OFF);
 		vector_table.irq[NVIC_SGPIO_IRQ] = sgpio_isr_rx;
 
-		hw_sync_stop();
+		//hw_sync_stop();
 	}
 
 	//hw_sync_stop();
@@ -84,11 +84,15 @@ void set_btle_transfer_mode(const transceiver_mode_t new_transceiver_mode) {
 	}
 }
 
+void reset_counter() {
+	sample_pos_write += SAMPLE_BUFFER_SIZE - (sample_pos_write & usb_bulk_buffer_mask);
+	sample_pos_read += SAMPLE_BUFFER_SIZE - (sample_pos_read & usb_bulk_buffer_mask);
+}
+
 /*
 BTLE_MODE_FIXEDCHANNEL: set individual channel -> usb_vendor_request_btle_channel
 BTLE_MODE_FOLLOW: follow connection w/ or w/o given AdvAddr
 */
-
 usb_request_status_t usb_vendor_request_btle_mode(
 	usb_endpoint_t* const endpoint,
 	const usb_transfer_stage_t stage)
@@ -115,8 +119,7 @@ usb_request_status_t usb_vendor_request_btle_mode(
 			case BTLE_MODE_OFF:
 				set_btle_transfer_mode(TRANSCEIVER_MODE_OFF);
 				usb_transfer_schedule_ack(endpoint->in);
-				sample_pos_write = 0;
-				sample_pos_read = 0;
+				reset_counter();
 				init_btle_config(&btle_config_global);
 			break;
 			case BTLE_MODE_FIXEDCHANNEL:
@@ -139,7 +142,7 @@ usb_request_status_t usb_vendor_request_btle_mode(
 	if (stage == USB_TRANSFER_STAGE_DATA) {
 		usb_transfer_schedule_ack(endpoint->in);
 
-		// only active btle if we are not already in this mode
+		// only activate btle if we are not already in this mode
 		if (_transceiver_mode == TRANSCEIVER_MODE_BTLE)
 			return USB_REQUEST_STATUS_OK;
 
@@ -150,8 +153,7 @@ usb_request_status_t usb_vendor_request_btle_mode(
 		if (endpoint->setup.length == 6)
 			btle_config_global.adv_addr_connect_set = 1;
 
-		sample_pos_write = 0;
-		sample_pos_read = 0;
+		reset_counter();
 
 		// response arrived, now we can activate streaming
 		set_btle_transfer_mode(TRANSCEIVER_MODE_BTLE);
@@ -167,11 +169,11 @@ usb_request_status_t usb_vendor_request_btle_mode(
 
 void set_channel(uint8_t channel) {
 	//sample_pos_read = sample_pos_write;
+	reset_counter();
 	//sample_pos_read_miss = 0;
 	btle_config_global.current_channel = channel;
 	set_freq( get_freq_by_channel(channel) );
-	sample_pos_write += SAMPLE_BUFFER_SIZE - (sample_pos_write & usb_bulk_buffer_mask);
-	sample_pos_read += SAMPLE_BUFFER_SIZE - (sample_pos_read & usb_bulk_buffer_mask);
+	reset_counter();
 }
 
 usb_request_status_t usb_vendor_request_btle_channel(

@@ -9,10 +9,10 @@ $ make
 
 
 To build and install a standard firmware image for HackRF One:
-
 $ cd hackrf_usb
 $ mkdir build
 $ cd build
+$ export PATH=...:$PATH
 $ cmake ..
 $ make
 $ hackrf_spiflash -w hackrf_usb.bin

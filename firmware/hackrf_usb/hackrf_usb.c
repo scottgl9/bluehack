@@ -196,7 +196,8 @@ int main(void) {
 	usb_run(&usb_device);
 
 	rf_path_init(&rf_path);
-	operacake_init();
+	// TODO: needed?
+	//operacake_init();
 
 	static uint32_t buflen_to_read = 0;
 	static uint32_t bytesread = 0;

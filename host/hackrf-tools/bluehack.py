@@ -27,6 +27,7 @@ import logging
 from pypacker.layer12 import btle
 from pypacker import ppcap
 from pypacker.checksum import crc_btle_init_reorder
+from pypacker.utils import get_vendor_for_mac
 
 logger = logging.getLogger("bluehack")
 logger.setLevel(logging.DEBUG)
@@ -207,13 +208,21 @@ def print_packet(args, bts):
 		)
 
 		if upper_layer.__class__ == btle.AdvInd:
-			print(" AdvAddr: %12s" % upper_layer.adv_addr_s, end="")
+			vendor = get_vendor_for_mac(upper_layer.adv_addr_s)
+
+			print(" AdvAddr: %12s %s" % (upper_layer.adv_addr_s, vendor), end="")
 		elif upper_layer.__class__ == btle.ScanRequest:
-			print(" ScanAddr: %12s AdvAddr: %12s" %
-				(upper_layer.scan_addr_s, upper_layer.adv_addr_s),
+			vendor1 = get_vendor_for_mac(upper_layer.scan_addr_s)
+			vendor2 = get_vendor_for_mac(upper_layer.adv_addr_s)
+
+			print(" ScanAddr: %12s %s AdvAddr: %12s %s" %
+				(upper_layer.scan_addr_s, vendor1,
+				upper_layer.adv_addr_s, vendor2),
 				end="")
 		elif upper_layer.__class__ == btle.ScanResponse:
-			print(" AdvAddr: %12s" % upper_layer.adv_addr_s,
+			vendor1 = get_vendor_for_mac(upper_layer.adv_addr_s)
+
+			print(" AdvAddr: %12s %s" % (upper_layer.adv_addr_s, vendor1),
 			end="")
 		elif upper_layer.__class__ == btle.ConnRequest:
 			print(" InitAddr: %12s AdvAddr: %12s AA: %4s CRCinit: %3s" %
@@ -243,7 +252,11 @@ def packet_cycler(args):
 	logger.debug("packet cycler started")
 
 	while args.is_running:
-		bts = args.hrf.get_next_packet()
+		try:
+			bts = args.hrf.get_next_packet()
+		except:
+			args.is_running = False
+			break
 
 		if bts is None or len(bts) == 0:
 			continue
@@ -283,8 +296,8 @@ def scan_btle(args):
 				channel = channel + 1 if channel < 39 else 37
 			console_in = input()
 		except KeyboardInterrupt:
-			dll.unlock_reader()
 			args.is_running = False
+			dll.unlock_reader()
 			logger.info("interrupted!")
 			break
 
@@ -302,7 +315,9 @@ def scan_btle(args):
 # Commmandline logic
 #
 MODE_DESCR = """
-Mode explanation:
+Exit: Ctrl+c and Enter
+
+>>> Mode explanation:
 
 All modes)
 - Press Enter to switch channels

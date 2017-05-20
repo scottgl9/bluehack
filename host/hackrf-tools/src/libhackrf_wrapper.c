@@ -158,7 +158,7 @@ int32_t open_board() {
 
 	pthread_mutex_lock(&lock_packet_read);
 
-	result = open_config_board(14, 0, 0, &device,
+	result = open_config_board(20, 0, 0, &device,
 		sigint_callback_handler, 8000000);
 
 	if (result != RETURN_OK) {
@@ -192,7 +192,7 @@ int32_t close_board() {
 	pthread_mutex_destroy(&lock_packet_read);
 	result |= hackrf_exit();
 
-	if (hackrf_exit() != HACKRF_SUCCESS) {
+	if (result != HACKRF_SUCCESS) {
 		return RETURN_ERROR;
 	}
 
