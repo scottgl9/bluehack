@@ -43,11 +43,7 @@
 #include "usb_bulk_buffer.h"
 
 void set_btle_transfer_mode(const transceiver_mode_t new_transceiver_mode) {
-	baseband_streaming_disable(&sgpio_config);
-
-	usb_endpoint_disable(&usb_endpoint_bulk_in);
 	usb_endpoint_disable(&usb_endpoint_bulk_out);
-
 	_transceiver_mode = new_transceiver_mode;
 
 	if (new_transceiver_mode == TRANSCEIVER_MODE_BTLE) {
@@ -56,31 +52,14 @@ void set_btle_transfer_mode(const transceiver_mode_t new_transceiver_mode) {
 		usb_endpoint_init(&usb_endpoint_bulk_in);
 		rf_path_set_direction(&rf_path, RF_PATH_DIRECTION_RX);
 		vector_table.irq[NVIC_SGPIO_IRQ] = sgpio_isr_rx;
-	}/* else if (new_transceiver_mode == TRANSCEIVER_MODE_TX) {
-		led_off(LED2);
-		led_on(LED3);
-		usb_endpoint_init(&usb_endpoint_bulk_out);
-		rf_path_set_direction(&rf_path, RF_PATH_DIRECTION_TX);
-		vector_table.irq[NVIC_SGPIO_IRQ] = sgpio_isr_tx;
-	}*/ else {
+		si5351c_activate_best_clock_source(&clock_gen);
+		baseband_streaming_enable(&sgpio_config);
+	}  else {
+		baseband_streaming_disable(&sgpio_config);
+		usb_endpoint_disable(&usb_endpoint_bulk_in);
 		led_off(LED2);
 		led_off(LED3);
 		rf_path_set_direction(&rf_path, RF_PATH_DIRECTION_OFF);
-		vector_table.irq[NVIC_SGPIO_IRQ] = sgpio_isr_rx;
-
-		//hw_sync_stop();
-	}
-
-	//hw_sync_stop();
-
-	if (new_transceiver_mode != TRANSCEIVER_MODE_OFF) {
-		si5351c_activate_best_clock_source(&clock_gen);
-
-		/*if( _hw_sync_mode != HW_SYNC_MODE_OFF) {
-			hw_sync_syn();
-		} else {*/
-			baseband_streaming_enable(&sgpio_config);
-		//}
 	}
 }
 
@@ -196,6 +175,18 @@ usb_request_status_t usb_vendor_request_btle_channel(
 		}
 
 		set_channel(endpoint->setup.value);
+		usb_transfer_schedule_ack(endpoint->in);
+	}
+
+	return USB_REQUEST_STATUS_OK;
+}
+
+usb_request_status_t usb_vendor_request_btle_noisegate(
+	usb_endpoint_t* const endpoint,
+	const usb_transfer_stage_t stage)
+{
+	if (stage == USB_TRANSFER_STAGE_SETUP) {
+		btle_config_global.noisegate = endpoint->setup.value;
 		usb_transfer_schedule_ack(endpoint->in);
 	}
 

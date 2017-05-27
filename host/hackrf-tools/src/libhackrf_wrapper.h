@@ -36,5 +36,6 @@ int32_t open_config_board(uint32_t rx_vgagain, int8_t do_amplify, uint32_t tx_vg
 int32_t open_board(void);
 int32_t close_board(void);
 int32_t set_btle_mode(int8_t mode, uint8_t* adv_addr);
+int32_t set_noisegate(uint8_t noisegate);
 int32_t set_btle_channel(int8_t channel);
 #endif

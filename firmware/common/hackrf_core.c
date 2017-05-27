@@ -663,7 +663,9 @@ void cpu_clock_init(void)
 	CGU_BASE_APB3_CLK = CGU_BASE_APB3_CLK_AUTOBLOCK(1)
 			| CGU_BASE_APB3_CLK_CLK_SEL(CGU_SRC_XTAL);
 
-	cpu_clock_pll1_low_speed();
+	// TODO: re-enable
+	//cpu_clock_pll1_low_speed();
+	cpu_clock_pll1_max_speed();
 
 	/* use PLL1 as clock source for BASE_M4_CLK (CPU) */
 	CGU_BASE_M4_CLK = (CGU_BASE_M4_CLK_CLK_SEL(CGU_SRC_PLL1) | CGU_BASE_M4_CLK_AUTOBLOCK(1));

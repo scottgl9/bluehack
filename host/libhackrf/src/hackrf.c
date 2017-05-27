@@ -82,6 +82,7 @@ typedef enum {
 	HACKRF_VENDOR_REQUEST_RESET = 30,
 	HACKRF_VENDOR_REQUEST_BTLE_MODE = 31,
 	HACKRF_VENDOR_REQUEST_BTLE_CHANNEL = 32,
+	HACKRF_VENDOR_REQUEST_BTLE_NOISEGATE = 33
 } hackrf_vendor_request;
 
 typedef enum {
@@ -1494,6 +1495,8 @@ static int kill_transfer_thread(hackrf_device* device)
 
 		/* Cancel all transfers */
 		cancel_transfers(device);
+	} else {
+		printf("kill_transfer_thread(): transfer thread was not running\n");
 	}
 
 	return HACKRF_SUCCESS;
@@ -1530,6 +1533,7 @@ static int create_transfer_thread(hackrf_device* device,
 			return HACKRF_ERROR_THREAD;
 		}
 	} else {
+		printf("create_transfer_thread(): thread was already running\n");
 		return HACKRF_ERROR_BUSY;
 	}
 
@@ -1980,14 +1984,14 @@ int ADDCALL hackrf_reset(hackrf_device* device) {
 
 int ADDCALL hackrf_set_btle_mode(hackrf_device* device,
 	const btle_mode mode,
-	const uint8_t* AdvAddr,
+	const uint8_t* advaddr,
 	hackrf_sample_block_cb_fn rx_callback) {
 	USB_API_REQUIRED(device, 0x0102)
 	int result;
 	uint8_t data[6] = {0};
 	// at least one byte
 	int data_size = 0;
-	printf("setting BTLE mode\n");
+	printf("setting BTLE mode to %d\n", mode);
 
 	if (mode < 0 || mode > BTLE_MODE_FOLLOW_DYNAMIC) {
 		printf("invalid mode: %d\n", mode);
@@ -2009,16 +2013,16 @@ int ADDCALL hackrf_set_btle_mode(hackrf_device* device,
 		data_size = 1;
 	}
 
-	if (mode == BTLE_MODE_FOLLOW_DYNAMIC && AdvAddr == NULL) {
-		printf("WARNING: BTLE_MODE_FOLLOW_DYNAMIC and no AdvAddr given!\n");
+	if (mode == BTLE_MODE_FOLLOW_DYNAMIC && advaddr == NULL) {
+		printf("WARNING: BTLE_MODE_FOLLOW_DYNAMIC and no advaddr given!\n");
 		return HACKRF_ERROR_INVALID_PARAM;
 	}
 
-	if (mode != BTLE_MODE_FIXEDCHANNEL && AdvAddr != NULL) {
+	if (mode != BTLE_MODE_FIXEDCHANNEL && advaddr != NULL) {
 		data_size = 6;
-		memcpy(data, AdvAddr, data_size);
-		/*printf("copied AdvAddr: %02X %02X %02X %02X %02X %02X\n",
-			AdvAddr[0], AdvAddr[1], AdvAddr[2], AdvAddr[3], AdvAddr[4], AdvAddr[5]);
+		memcpy(data, advaddr, data_size);
+		/*printf("copied advaddr: %02X %02X %02X %02X %02X %02X\n",
+			advaddr[0], advaddr[1], advaddr[2], advaddr[3], advaddr[4], advaddr[5]);
 		*/
 	}
 
@@ -2052,6 +2056,23 @@ int ADDCALL hackrf_set_btle_mode(hackrf_device* device,
 	return result;
 }
 
+int ADDCALL hackrf_set_btle_noisegate(hackrf_device* device, uint8_t noisegate) {
+	USB_API_REQUIRED(device, 0x0102)
+	int result;
+
+	result = libusb_control_transfer(
+		device->usb_device,
+		LIBUSB_ENDPOINT_OUT | LIBUSB_REQUEST_TYPE_VENDOR | LIBUSB_RECIPIENT_DEVICE,
+		HACKRF_VENDOR_REQUEST_BTLE_NOISEGATE,
+		noisegate,
+		0,
+		NULL,
+		0,
+		0
+	);
+
+	return result;
+}
 
 int ADDCALL hackrf_set_btle_channel(hackrf_device* device,
 	const int channel) {

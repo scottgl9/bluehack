@@ -253,8 +253,8 @@ extern ADDAPI int ADDCALL hackrf_set_btle_mode(hackrf_device* device,
 	const btle_mode mode,
 	const uint8_t* AdvAddr,
 	hackrf_sample_block_cb_fn rx_callback);
-int ADDCALL hackrf_set_btle_channel(hackrf_device* device,
-	const int channel);
+int ADDCALL hackrf_set_btle_noisegate(hackrf_device* device, uint8_t noisegate);
+int ADDCALL hackrf_set_btle_channel(hackrf_device* device, const int channel);
 #ifdef __cplusplus
 } // __cplusplus defined.
 #endif

@@ -229,27 +229,8 @@ usb_request_status_t usb_vendor_request_set_freq_explicit(
 	}
 }
 
-//static volatile transceiver_mode_t _transceiver_mode = TRANSCEIVER_MODE_OFF;
-//static volatile hw_sync_mode_t _hw_sync_mode = HW_SYNC_MODE_OFF;
 volatile transceiver_mode_t _transceiver_mode = TRANSCEIVER_MODE_OFF;
 volatile hw_sync_mode_t _hw_sync_mode = HW_SYNC_MODE_OFF;
-
-/*
-void set_hw_sync_mode(const hw_sync_mode_t new_hw_sync_mode) {
-	_hw_sync_mode = new_hw_sync_mode;
-}
-hw_sync_mode_t get_hw_sync_mode() {
-	return _hw_sync_mode;
-}
-
-transceiver_mode_t transceiver_mode(void) {
-	return _transceiver_mode;
-}
-
-void set_transceiver_mode_value(transceiver_mode_t transceiver_mode) {
-	_transceiver_mode = transceiver_mode;
-}
-*/
 
 void set_transceiver_mode(const transceiver_mode_t new_transceiver_mode) {
 	baseband_streaming_disable(&sgpio_config);

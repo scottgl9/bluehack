@@ -29,5 +29,7 @@ usb_request_status_t usb_vendor_request_btle_mode(
 	usb_endpoint_t* const endpoint, const usb_transfer_stage_t stage);
 usb_request_status_t usb_vendor_request_btle_channel(
 	usb_endpoint_t* const endpoint, const usb_transfer_stage_t stage);
+usb_request_status_t usb_vendor_request_btle_noisegate(
+	usb_endpoint_t* const endpoint, const usb_transfer_stage_t stage);
 void set_channel(uint8_t channel);
 #endif /* end of include guard: __USB_API_BTLE_H__ */

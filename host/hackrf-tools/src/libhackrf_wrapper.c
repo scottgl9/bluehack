@@ -11,6 +11,7 @@ int32_t rx_callback(hackrf_transfer* transfer) {
 	PACKET* packet;
 
 	if (packet_cnt_write - packet_cnt_read > PACKETS_CNT) {
+		printf("buffer full, ignoring packet...\n");
 		return 0;
 	}
 
@@ -124,6 +125,8 @@ int32_t open_config_board(uint32_t rx_vgagain, int8_t do_amplify, uint32_t tx_vg
 
 	if (do_amplify)
 		result |= hackrf_set_amp_enable(device_local, 1);
+	else
+		result |= hackrf_set_amp_enable(device_local, 0);
 	// IF ("lna", 0 to 40 dB in 8 dB steps)
 	result |= hackrf_set_lna_gain(device_local, MAX_LNA_GAIN);
 	// baseband ("vga", 0 to 62 dB in 2 dB steps)
@@ -158,8 +161,7 @@ int32_t open_board() {
 
 	pthread_mutex_lock(&lock_packet_read);
 
-	result = open_config_board(20, 0, 0, &device,
-		sigint_callback_handler, 8000000);
+	result = open_config_board(20, 1, 0, &device, sigint_callback_handler, 8000000);
 
 	if (result != RETURN_OK) {
 		fprintf(stderr, "hackrf_init() failed: %s (%d)\n", hackrf_error_name(result), result);
@@ -209,6 +211,22 @@ int32_t set_btle_mode(int8_t mode, uint8_t* adv_addr) {
 
 	// TODO: check if adv_addr can be NULL?
 	result = hackrf_set_btle_mode(device, mode, adv_addr, (hackrf_sample_block_cb_fn)rx_callback);
+
+	if (result != HACKRF_SUCCESS) {
+		return RETURN_ERROR;
+	}
+
+	return RETURN_OK;
+}
+
+int32_t set_noisegate(uint8_t noisegate) {
+	int32_t result;
+
+	if (device == NULL) {
+		return RETURN_ERROR;
+	}
+
+	result = hackrf_set_btle_noisegate(device, noisegate);
 
 	if (result != HACKRF_SUCCESS) {
 		return RETURN_ERROR;

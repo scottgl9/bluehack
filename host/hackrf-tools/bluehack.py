@@ -22,6 +22,7 @@ import struct
 from ctypes import cdll, c_int, create_string_buffer, byref
 import threading
 import argparse
+import time
 import logging
 
 from pypacker.layer12 import btle
@@ -198,7 +199,7 @@ def print_packet(args, bts):
 		upper_layer = pkt.upper_layer
 		crc_ok = pkt.is_crc_ok(crc_init=args.crc_init)
 
-		print("%-12s CH: %2d sig: %3d/255 (CRC: %-3s, Miss: %7d)" %
+		print("%-14s CH: %2d sig: %3d/255 (CRC: %-3s, Miss: %7d)" %
 			(upper_layer.__class__.__name__,
 			bts_ch,
 			bts_sig,
@@ -281,6 +282,17 @@ def scan_btle(args):
 	# advaddr is already LE (UI input: BE -> Logic: LE)
 	if args.advaddr is not None:
 		logger.info("AdvAddr to follow (LE): %s", args.advaddr)
+
+
+	# TODO: just for testing: start -> stop
+	"""
+	logger.debug("on -> off")
+	hrf.set_btle_mode(BTLE_MODE_FIXEDCHANNEL, None)
+	time.sleep(2)
+	hrf.set_btle_mode(BTLE_MODE_OFF, None)
+	logger.debug("sleeping...")
+	time.sleep(10)
+	"""
 
 	hrf.set_btle_mode(args.btle_mode, args.advaddr)
 	channel = 37
